@@ -1,7 +1,6 @@
 import { createHmac } from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import type { Database } from '@/libs/supabase/types';
 import { sendWebsiteLiveEmail } from '@/features/emails/send-website-live';
 
 function verifySignature(body: string, signature: string | null): boolean {
@@ -12,7 +11,7 @@ function verifySignature(body: string, signature: string | null): boolean {
 }
 
 export async function POST(req: NextRequest) {
-  const supabaseAdmin = createClient<Database>(
+  const supabaseAdmin = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
   );

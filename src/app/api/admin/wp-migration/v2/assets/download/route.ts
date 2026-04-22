@@ -105,9 +105,9 @@ export async function POST(request: NextRequest) {
     let pagesQuery = supabaseAdminClient
       .from('migration_pages')
       .select('url, original_html, metadata')
-      .eq('job_id', jobId);
+      .eq('job_id', jobId) as any;
     if (scopeLabel) {
-      pagesQuery = pagesQuery.eq('page_label' as any, scopeLabel);
+      pagesQuery = pagesQuery.eq('page_label', scopeLabel);
     }
     const { data: pages, error: pagesError } = await pagesQuery
       .order('render_priority', { ascending: true });

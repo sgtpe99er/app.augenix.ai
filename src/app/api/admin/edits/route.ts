@@ -1,10 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 import { getSession } from '@/features/account/controllers/get-session';
-import type { Tables } from '@/libs/supabase/types';
 
-type EditRequest = Tables<'aa_demo_edit_requests'>;
-type Business = Tables<'aa_demo_businesses'>;
+type EditRequest = {
+  id: string;
+  user_id: string;
+  request_description: string | null;
+  status: string;
+  created_at: string;
+};
+
+type Business = {
+  id: string;
+  business_name: string | null;
+};
 
 export async function GET(request: NextRequest) {
   try {

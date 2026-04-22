@@ -2,7 +2,6 @@
 
 import { cookies } from 'next/headers';
 
-import { Database } from '@/libs/supabase/types';
 import { getEnvVar } from '@/utils/get-env-var';
 import { createServerClient } from '@supabase/ssr';
 
@@ -21,7 +20,7 @@ function getPublishableKey(): string {
 export async function createSupabaseServerClient() {
   const cookieStore = await cookies();
 
-  return createServerClient<Database>(
+  return createServerClient(
     getEnvVar(process.env.NEXT_PUBLIC_SUPABASE_URL, 'NEXT_PUBLIC_SUPABASE_URL'),
     getPublishableKey(),
     {

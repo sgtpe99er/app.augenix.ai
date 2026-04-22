@@ -106,6 +106,10 @@ export type Database = {
         Args: { user_uuid: string }
         Returns: boolean
       }
+      get_admin_stats: {
+        Args: Record<string, never>
+        Returns: Json
+      }
     }
     Enums: {
       [_ in never]: never

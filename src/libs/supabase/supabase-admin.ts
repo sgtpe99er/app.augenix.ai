@@ -1,4 +1,3 @@
-import type { Database } from '@/libs/supabase/types';
 import { getEnvVar } from '@/utils/get-env-var';
 import { createClient } from '@supabase/supabase-js';
 
@@ -13,8 +12,8 @@ function getSecretKey(): string {
   throw new Error('Missing Supabase secret key: Set SUPABASE_SECRET_KEY or SUPABASE_SERVICE_ROLE_KEY');
 }
 
-// Create client with auth options to avoid client-side initialization
-export const supabaseAdminClient = createClient<Database>(
+// Create untyped client - tables are not fully typed in this demo
+export const supabaseAdminClient = createClient(
   getEnvVar(process.env.NEXT_PUBLIC_SUPABASE_URL, 'NEXT_PUBLIC_SUPABASE_URL'),
   getSecretKey(),
   {

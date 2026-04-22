@@ -2,10 +2,21 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
 import { getSession } from '@/features/account/controllers/get-session';
-import type { Tables } from '@/libs/supabase/types';
 
-type DeployedWebsite = Tables<'aa_demo_deployed_websites'>;
-type Business = Tables<'aa_demo_businesses'>;
+type DeployedWebsite = {
+  id: string;
+  customer_id: string;
+  subdomain: string;
+  status: string;
+  created_at: string;
+  vercel_project_id?: string;
+  github_repo_name?: string;
+};
+
+type Business = {
+  id: string;
+  business_name: string | null;
+};
 
 export async function GET(request: NextRequest) {
   try {

@@ -39,31 +39,31 @@ export async function POST(request: NextRequest) {
 
     if (scopeLabel === 'home') {
       // Home page: find by URL match or label
-      const { data: labeled } = await supabaseAdminClient
+      const { data: labeled } = await (supabaseAdminClient
         .from('migration_pages')
         .select('*')
-        .eq('job_id', jobId)
-        .eq('page_label' as any, 'home');
+        .eq('job_id', jobId) as any)
+        .eq('page_label', 'home');
       
       if (labeled && labeled.length > 0) {
         pagesToCapture = labeled;
       } else {
         // Fallback: match by target URL
-        const { data: homepage } = await supabaseAdminClient
+        const { data: homepage } = await (supabaseAdminClient
           .from('migration_pages')
           .select('*')
-          .eq('job_id', jobId)
+          .eq('job_id', jobId) as any)
           .eq('url', job.target_url)
           .single();
         if (homepage) pagesToCapture = [homepage];
       }
     } else {
       // Other labels: fetch all pages with that label
-      const { data: labeled } = await supabaseAdminClient
+      const { data: labeled } = await (supabaseAdminClient
         .from('migration_pages')
         .select('*')
-        .eq('job_id', jobId)
-        .eq('page_label' as any, scopeLabel);
+        .eq('job_id', jobId) as any)
+        .eq('page_label', scopeLabel);
       pagesToCapture = labeled || [];
     }
 

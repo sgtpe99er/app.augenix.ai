@@ -41,3 +41,22 @@ export const getStatusBadge = (status: string | null): string => {
 
 export const formatStatus = (status: string | null): string =>
   status ? status.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : 'Unknown';
+
+export type DashboardStats = {
+  monthlyRevenue: number;
+  totalUsers: number;
+  totalProspects: number;
+  activeWebsites: number;
+  newUsersThisWeek: number;
+  pendingQueue: number;
+  pendingEdits: number;
+};
+
+export type EditRequestWithBusiness = {
+  id: string;
+  user_id: string;
+  businessName: string;
+  request_description: string | null;
+  status: string;
+  created_at: string;
+};

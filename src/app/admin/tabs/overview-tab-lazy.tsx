@@ -88,7 +88,7 @@ export function OverviewTab({ stats }: OverviewTabProps) {
             {pendingRequests.slice(0, 5).map((req) => (
               <AdminListRow
                 key={req.id}
-                title={req.request_description}
+                title={req.request_description ?? 'No description'}
                 subtitle={`${req.businessName} · ${new Date(req.created_at).toLocaleDateString()}`}
                 actions={
                   <>

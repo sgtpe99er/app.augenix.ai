@@ -3,24 +3,23 @@ import { createClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
 import { createServerClient } from '@supabase/ssr';
 import { mergePullRequest } from '@/libs/github/client';
-import type { Database } from '@/libs/supabase/types';
 
 async function requireAdmin(): Promise<{ userId: string } | NextResponse> {
   const cookieStore = await cookies();
-  const supabase = createServerClient<Database>(
+  const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
     { cookies: { get: (name: string) => cookieStore.get(name)?.value } },
   );
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  const { data: isAdmin } = await supabase.rpc('is_admin', { user_uuid: user.id } as any);
+  const { data: isAdmin } = await supabase.rpc('is_admin', { user_uuid: user.id });
   if (!isAdmin) return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   return { userId: user.id };
 }
 
 export async function POST(req: NextRequest) {
-  const supabaseAdmin = createClient<Database>(
+  const supabaseAdmin = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
   );
