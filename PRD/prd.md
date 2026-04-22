@@ -1,79 +1,86 @@
 # Ardent Advisors AI – Vendor Statement Reconciliation Dashboard
 **Product Requirements Document (PRD)**  
-**Version 1.0** | April 22, 2026  
+**Version 1.1** | April 22, 2026  
 **Prepared for:** Nathan Glass – Lampasas Marketing / Augenix.ai  
-**Project Goal:** Build a high-conviction demo in ≤6 hours that turns painful manual Nexsyis vendor statement reconciliation into an AI-assisted, fully auditable review process for collision shop Office Managers.
 
-## 1. Executive Summary (Ultra-Corporate Positioning)
+## 1. Executive Summary
+[Same ultra-corporate summary as before – the transformation for Office Managers, <15-minute demo success metric, 5-year profit goal, inbound marketing focus]
 
-This demo replicates the exact Nexsyis Collision vendor statement reconciliation workflow while replacing manual effort with AI-driven automation and complete human-in-the-loop oversight.
+## 2. Business Objectives & User Profile
+[Unchanged – $1M+ collision shops, teaching-led approach, 4-6 hours/day]
 
-The Office Manager no longer performs reconciliation — she **reviews, audits, and approves** work already completed by AI. Every decision is logged with timestamp, confidence score, reasoning, and oddity flags. Three parallel LLM runs ensure consensus-level accuracy with built-in error handling and retries.
+## 3. Scope & Screens
+[Unchanged – 6 must-have screens]
 
-**Success Metric for Sales Calls (<15 minutes):**  
-The Office Manager can run a full mock reconciliation, see discrepancies flagged, review/resolve them, approve the batch, and export a clean audit report — leading to the reaction: “Holy shit, this saves me hours every month.”
+## 4. Technical Stack & Setup
+- Supabase Project: augenix.ai (existing)
+- All demo tables prefixed `aa_demo_`
+- Vercel: Separate project (`ardent-advisors-ai-recon-demo`)
+- Next.js 15 App Router + Tailwind CSS + Vercel AI SDK
 
-This demo becomes the foundation of your long-term authority marketing and sales engine for Ardent Advisors AI — teaching clearly how AI automation delivers time savings, accuracy, and better decisions for $1M+ revenue collision (and other) businesses.
+## 5. Demo Data & Seeding Instructions
 
-## 2. Business Objectives (5-Year Horizon)
+**File:** `aa_demo_seed.sql`
 
-- **Short-term (next 30 days):** Ship a polished, enterprise-looking demo you can present to collision shop owners and office managers.
-- **Medium-term (6–18 months):** Convert the demo codebase into production integrations with real Nexsyis API + direct SQL access.
-- **Long-term (5 years):** Build a scalable AI automation platform (recurring revenue $2k–$5k+/month per client) that runs profitably at 4–6 hours/day of your time while hitting $20k+/month profit. Leverage your strength in teaching and explaining technology to attract inbound clients.
+**How to use the seed script:**
+1. Open your Supabase project **augenix.ai**.
+2. Go to the **SQL Editor**.
+3. Copy the entire content of `aa_demo_seed.sql`.
+4. Paste and run the script once.
+5. Verify by running these queries in the SQL Editor:
+   ```sql
+   SELECT * FROM aa_demo_vendors;
+   SELECT COUNT(*) FROM aa_demo_invoices;  -- Should show ~20+ rows for demo
+   SELECT * FROM aa_demo_statements;
+   SELECT * FROM aa_demo_reconciliation_batches;
 
-**Ideal Client Profile:**  
-US-based businesses (preferably South or Central US) with $1M+ annual revenue, 5+ employees. Strong network in collision shops, attorneys, engineering firms, and plumbing — open to others.
+6. The script includes realistic $10M collision shop data with built-in discrepancies ($247 mismatch, missing credit, duplicate invoice, wrong LK, + clean match).
 
-## 3. User & Role
+7. You can re-run the script safely (it truncates first) if you want to reset demo data.
 
-- **Primary User:** Office Manager (detail-oriented, currently performs this process manually).
-- **Tone & Branding:** Ultra-corporate, professional, clean, authoritative, zero fluff.
-- **Dashboard Name:** Ardent Advisors AI
-- **Logo:** Use the client’s official Ardent Advisors logo in the header (placeholder in code).
-- **Colors:** Follow client’s corporate palette (navy/blue dominant with professional accents).
+This gives you immediate, realistic data for testing the reconciliation flow.
 
-## 4. Scope – 6-Hour Build
+## 6. AI Prompt Files & Usage Instructions
+Folder: Create /prompts/ in the root of your Next.js project.
+Files:
 
-**Must-Have Screens:**
-1. Login (Supabase Auth)
-2. Dashboard Home (quick stats + “Start New Reconciliation” CTA)
-3. Select Vendor / Period
-4. Reconciliation Run Page (progress + AI processing)
-5. Results / Audit Review Page (core screen with table, audit panel, flags)
-6. Report Export (PDF/CSV with full audit log)
+prompts/system-prompt.md
+prompts/user-prompt-template.md
+prompts/consensus-prompt.md
 
-**Out of Scope for this build (skip):**
-- Multi-vendor batch run
-- Document upload / OCR simulation
-- “Un-Finalize” flow
+How to use the 3 prompt files (3 parallel runs + consensus):
 
-## 5. Demo Data (Realistic $10M Collision Shop)
+In your reconciliation logic (e.g., a Server Action or API route /api/reconcile):
+Load the system prompt once (read as string).
+For each of the 3 parallel calls:
+Fill user-prompt-template.md with actual data using string replacement or a simple template function:
+{{vendor_name}}, {{period_start}}, {{period_end}}, {{statement_total}}
+{{system_invoices_json}} (stringified array from Supabase)
+{{statement_text}} (from aa_demo_statements)
 
-- Scale: ~$700k monthly AP volume, 150–300 invoices/month across 6 locations.
-- 5 Vendors: Parts Supplier A, Paint Vendor B, Tool Vendor C, Glass & Mirror D, Equipment Lease E.
-- Built-in discrepancies (one strong example per vendor + one clean match):
-  - $247 amount mismatch (possible tax/core return)
-  - Missing credit ($1,850)
-  - Duplicate invoice
-  - Wrong LK assignment
-- All data stored in Supabase tables with prefix `aa_demo_`.
+Call Vercel AI SDK (generateText or streamText) via AI Gateway with:
+System: content from system-prompt.md
+User: filled template
 
-## 6. AI Intelligence Layer
 
-- **Approach:** Full LLM-powered (via Vercel AI SDK + AI Gateway).
-- **Consensus Method:** 3 parallel runs (different temperatures/seeds) → majority vote + average confidence.
-- **Features:**
-  - Automatic retry on failure.
-  - Clear warnings/errors for low consensus (<85%).
-  - “Re-Run AI” button on individual lines.
-- **Output:** Matched pairs, flags, plain-English explanations, confidence scores.
+Collect the 3 JSON responses.
+Feed all 3 into consensus-prompt.md (using placeholders {{run1_json}}, etc.) to generate the final audited result.
 
-## 7. Audit & Review Features (Human-in-the-Loop)
+Store individual runs + final consensus in aa_demo_audit_logs for full traceability.
+On the Results page, display flags, confidence, reasoning, and allow “Re-Run AI” on specific lines (re-triggers 3 parallel + consensus for that row only).
 
-- Detailed per-item audit log showing:
-  - Timestamp
-  - AI decision & confidence %
-  - Full reasoning
-  - Oddity flag (with explanation)
-  - Human override note field
-- Global warnings
+These prompts enforce Nexsyis rules, corporate tone, and high accuracy with built-in oddity detection.
+## 7. Implementation / Build Plan (6-Hour Timeline)
+[Same as before, now with references to the seed and prompts]
+Quick Start After Downloading Files:
+
+Create new Vercel/Next.js project.
+Add Supabase env vars.
+Run the seed script in augenix.ai.
+Add the 3 prompt files to /prompts/.
+Build screens starting with auth → home → select → run (call AI) → results (display consensus + audit log) → export.
+Use Tailwind for ultra-corporate styling with Ardent Advisors logo in header.
+
+## 8. Audit Features, AI Layer, Success Metrics
+[Unchanged – human-in-the-loop, 3-run consensus, <15 min “holy shit” demo]
+This PRD is now fully self-contained. You can hand it (plus the three files) to a developer or use it yourself without needing external context.
