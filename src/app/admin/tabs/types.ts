@@ -1,8 +1,6 @@
 import type { Tables } from '@/libs/supabase/types';
 
 export type Business = Tables<'aa_demo_businesses'>;
-export type EditRequest = Tables<'aa_demo_edit_requests'>;
-export type GeneratedAsset = Tables<'aa_demo_generated_assets'>;
 
 export type CustomerWithEmail = {
   user_id: string;
@@ -20,22 +18,7 @@ export type CustomerWithEmail = {
   website_features: string[] | null;
   status: string;
   is_prospect: boolean;
-  // Payment fields — auto-updated by Stripe, not manually editable
-  payment_status: string | null;
-  subscription_plan: string | null;
-  amount_paid: number | null;
-  payment_paid_at: string | null;
 };
-export type EditRequestWithBusiness = EditRequest & { businessName: string; complexity?: string };
-export interface DashboardStats {
-  totalUsers: number;
-  totalProspects: number;
-  activeWebsites: number;
-  pendingQueue: number;
-  pendingEdits: number;
-  monthlyRevenue: number;
-  newUsersThisWeek: number;
-}
 
 export const getStatusBadge = (status: string | null): string => {
   if (!status) return 'bg-zinc-500/20 text-zinc-600 dark:text-zinc-400';

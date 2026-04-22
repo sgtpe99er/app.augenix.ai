@@ -8,7 +8,7 @@ export async function getOrCreateCustomer({ userId, email }: { userId: string; e
   }
 
   const { data, error } = await supabaseAdminClient
-    .from('aa_demo_customers')
+    .from('customers')
     .select('stripe_customer_id')
     .eq('id', userId)
     .single();
@@ -26,7 +26,7 @@ export async function getOrCreateCustomer({ userId, email }: { userId: string; e
 
     // Insert the customer ID into our Supabase mapping table.
     const { error: supabaseError } = await supabaseAdminClient
-      .from('aa_demo_customers')
+      .from('customers')
       .insert([{ id: userId, stripe_customer_id: customer.id }]);
 
     if (supabaseError) {

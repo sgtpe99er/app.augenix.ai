@@ -20,7 +20,7 @@ export async function GET(
 
     // Check if user is admin
     const { data: adminUser } = await supabaseAdminClient
-      .from('aa_demo_admin_users')
+      .from('admin_users')
       .select('id')
       .eq('user_id', user.id)
       .single();

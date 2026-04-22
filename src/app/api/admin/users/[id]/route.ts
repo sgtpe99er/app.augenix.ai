@@ -52,16 +52,16 @@ export async function PATCH(
     if (role === 'admin') {
       // Upsert into admin_users
       const { data: existing } = await supabaseAdminClient
-        .from('aa_demo_admin_users')
+        .from('admin_users')
         .select('id')
         .eq('user_id', userId)
         .maybeSingle();
       if (!existing) {
-        await supabaseAdminClient.from('aa_demo_admin_users').insert({ user_id: userId } as any);
+        await supabaseAdminClient.from('admin_users').insert({ user_id: userId } as any);
       }
     } else {
       // Remove from admin_users
-      await supabaseAdminClient.from('aa_demo_admin_users').delete().eq('user_id', userId);
+      await supabaseAdminClient.from('admin_users').delete().eq('user_id', userId);
     }
   }
 

@@ -29,7 +29,7 @@ export default async function DashboardPage() {
   ] = await Promise.all([
     supabase.from('aa_demo_deployed_websites').select('*').eq('user_id', userId).maybeSingle(),
     supabase
-      .from('aa_demo_subscriptions')
+      .from('subscriptions')
       .select('id, status, current_period_end')
       .eq('user_id', userId)
       .in('status', ['active', 'trialing'])

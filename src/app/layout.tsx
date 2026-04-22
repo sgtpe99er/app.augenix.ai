@@ -2,14 +2,10 @@ import { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Montserrat, Montserrat_Alternates, Poppins } from 'next/font/google';
-import { Logo } from '@/components/logo';
-import { ConditionalHeader } from '@/components/conditional-header';
 import { ThemeInitScript } from '@/components/theme-init-script';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/utils/cn';
 import { Analytics } from '@vercel/analytics/react';
-
-import { Navigation } from './navigation';
 
 import '@/styles/globals.css';
 

@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
 
   // If admin role, insert into admin_users table
   if (role === 'admin') {
-    await supabaseAdminClient.from('aa_demo_admin_users').insert({
+    await supabaseAdminClient.from('admin_users').insert({
       user_id: userId,
     } as any);
   }
@@ -145,7 +145,7 @@ export async function GET(request: NextRequest) {
     ] = await Promise.all([
       supabaseAdminClient.auth.admin.listUsers({ perPage: 1000 }),
       supabase.from('aa_demo_businesses').select('*'),
-      supabase.from('aa_demo_admin_users').select('user_id'),
+      supabase.from('admin_users').select('user_id'),
     ]);
 
     const adminUserIds = (adminUsers ?? []).map((a: any) => a.user_id as string);

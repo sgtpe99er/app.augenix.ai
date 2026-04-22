@@ -115,7 +115,7 @@ async function handleHostingPayment(session: Stripe.Checkout.Session) {
 
   // Resolve userId from Stripe customer → customers table
   const { data: customerRow } = await db
-    .from('aa_demo_customers')
+    .from('customers')
     .select('id')
     .eq('stripe_customer_id', session.customer as string)
     .single();

@@ -10,7 +10,7 @@ export async function POST() {
 
   // Look up the Stripe customer ID
   const { data: customer } = await supabaseAdminClient
-    .from('aa_demo_customers')
+    .from('customers')
     .select('stripe_customer_id')
     .eq('id', session.user.id)
     .single();
