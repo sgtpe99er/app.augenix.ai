@@ -35,7 +35,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Free Website Builder for Small Businesses',
+  title: 'Ardent Advisors AI',
   description: 'Get a free professional website, logo, and branding guide for your small business. We handle everything — you just pay for hosting.',
 };
 
