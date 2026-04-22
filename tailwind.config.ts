@@ -65,6 +65,17 @@ const config: Config = {
           DEFAULT: 'hsl(var(--brand))',
           foreground: 'hsl(var(--brand-foreground))',
         },
+        surface: {
+          DEFAULT: 'hsl(var(--surface))',
+          'container-low': 'hsl(var(--surface-container-low))',
+          'container-lowest': 'hsl(var(--surface-container-lowest))',
+        },
+        'on-surface': {
+          DEFAULT: 'hsl(var(--on-surface))',
+          variant: 'hsl(var(--on-surface-variant))',
+        },
+        'outline-variant': 'hsl(var(--outline-variant))',
+        'on-primary-container': 'hsl(var(--on-primary-container))',
       },
       borderRadius: {
         lg: `var(--radius)`,

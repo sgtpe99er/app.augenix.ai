@@ -49,6 +49,15 @@
     /* Card variants for nesting */
     --card-nested: 0 0% 94%;
     --card-nested-foreground: 0 0% 0%;
+
+    /* DESIGN.md - The Curator's Canvas */
+    --surface: 217 33% 97%; /* #f7f9fb */
+    --surface-container-low: 217 20% 93%; /* #f2f4f6 */
+    --surface-container-lowest: 0 0% 100%; /* #ffffff */
+    --on-surface: 210 10% 10%; /* #191c1e */
+    --on-surface-variant: 220 5% 29%; /* #45464d */
+    --outline-variant: 210 10% 85%; /* for ghost borders */
+    --on-primary-container: 217 91% 55%; /* Electric Blue #0066cc */
   }
 
   .dark {
@@ -98,6 +107,15 @@
     /* Card variants for nesting */
     --card-nested: 0 0% 15%;
     --card-nested-foreground: 0 0% 100%;
+
+    /* DESIGN.md - Dark mode */
+    --surface: 0 0% 0%;
+    --surface-container-low: 0 0% 10%;
+    --surface-container-lowest: 0 0% 5%;
+    --on-surface: 0 0% 100%;
+    --on-surface-variant: 0 0% 65%;
+    --outline-variant: 0 0% 25%;
+    --on-primary-container: 210 100% 70%;
   }
   ::selection {
     @apply text-black;

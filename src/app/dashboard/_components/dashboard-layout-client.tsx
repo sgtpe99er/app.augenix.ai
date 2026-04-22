@@ -42,8 +42,8 @@ export function DashboardLayoutClient({ children, businessName, userEmail, imper
     cn(
       'flex w-full items-center gap-3 py-2.5 pl-6 pr-4 text-left text-sm font-medium transition-colors',
       active
-        ? 'bg-[#f2f4f6] text-[#191c1e] dark:bg-zinc-900 dark:text-white'
-        : 'text-[#45464d] hover:bg-[#f2f4f6] hover:text-[#191c1e] dark:text-neutral-400 dark:hover:bg-zinc-900 dark:hover:text-white'
+        ? 'bg-surface-container-low text-on-surface dark:bg-zinc-900 dark:text-white'
+        : 'text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface dark:text-neutral-400 dark:hover:bg-zinc-900 dark:hover:text-white'
     );
 
   const sidebar = (
@@ -60,12 +60,12 @@ export function DashboardLayoutClient({ children, businessName, userEmail, imper
   const header = (
     <div className='sticky top-0 z-50'>
       <div
-        className='absolute inset-0 bg-[#f7f9fb]/80 backdrop-blur-md dark:bg-black/80'
+        className='absolute inset-0 bg-surface/80 backdrop-blur-md dark:bg-black/80'
         style={{ left: 'calc(-50vw + 50%)', width: '100vw' }}
       />
       <div className='relative'>
         <div className='pointer-events-none absolute inset-y-0 left-[260px] right-0 hidden items-center justify-center lg:flex'>
-          <span id='dashboard-header-context' className='font-serif text-sm italic text-[#45464d] dark:text-neutral-300'></span>
+          <span id='dashboard-header-context' className='font-serif text-sm italic text-on-surface-variant dark:text-neutral-300'></span>
         </div>
         <div className='flex h-16 items-center justify-between'>
           <div className='flex items-center gap-4'>
@@ -88,7 +88,7 @@ export function DashboardLayoutClient({ children, businessName, userEmail, imper
               <SheetTrigger className='text-black dark:text-white lg:hidden'>
                 <IoMenu size={24} />
               </SheetTrigger>
-              <SheetContent side='right' className='w-[280px] border-0 bg-[#f7f9fb] p-6 dark:bg-zinc-950'>
+              <SheetContent side='right' className='w-[280px] border-0 bg-surface p-6 dark:bg-zinc-950'>
                 <SheetTitle className='sr-only'>Dashboard Menu</SheetTitle>
                 <nav className='flex flex-col gap-1 pt-10'>
                   <SheetClose asChild>
@@ -99,11 +99,11 @@ export function DashboardLayoutClient({ children, businessName, userEmail, imper
                   </SheetClose>
                 </nav>
                 <div className='mt-8 pt-6'>
-                  <p className='mb-3 px-3 font-serif text-xs italic tracking-wide text-[#45464d] dark:text-neutral-400'>Account</p>
+                  <p className='mb-3 px-3 font-serif text-xs italic tracking-wide text-on-surface-variant dark:text-neutral-400'>Account</p>
                   {(businessName || userEmail) && (
                     <div className='mb-3 px-3'>
-                      {businessName && <div className='text-sm font-medium text-[#191c1e] dark:text-white'>{businessName}</div>}
-                      {userEmail && <div className='text-xs text-[#45464d] dark:text-neutral-500'>{userEmail}</div>}
+                      {businessName && <div className='text-sm font-medium text-on-surface dark:text-white'>{businessName}</div>}
+                      {userEmail && <div className='text-xs text-on-surface-variant dark:text-neutral-500'>{userEmail}</div>
                     </div>
                   )}
                   <SheetClose asChild>
@@ -119,7 +119,7 @@ export function DashboardLayoutClient({ children, businessName, userEmail, imper
                     <IoLogOutOutline className='h-4 w-4 shrink-0' />
                     <span>Log Out</span>
                   </button>
-                  <p className='mt-6 px-3 font-serif text-xs italic tracking-wide text-[#45464d] dark:text-neutral-400'>Appearance</p>
+                  <p className='mt-6 px-3 font-serif text-xs italic tracking-wide text-on-surface-variant dark:text-neutral-400'>Appearance</p>
                   <div className='mt-2 flex gap-1 px-3'>
                     {(['dark', 'light', 'system'] as ThemePreference[]).map((t) => (
                       <button
@@ -128,8 +128,8 @@ export function DashboardLayoutClient({ children, businessName, userEmail, imper
                         className={cn(
                           'rounded-sm px-3 py-1.5 text-xs font-medium transition-colors',
                           preference === t
-                            ? 'bg-[#191c1e] text-white dark:bg-white dark:text-[#191c1e]'
-                            : 'text-[#45464d] hover:bg-[#f2f4f6] hover:text-[#191c1e] dark:text-neutral-400 dark:hover:bg-zinc-900 dark:hover:text-white'
+                            ? 'bg-on-surface text-white dark:bg-white dark:text-on-surface'
+                            : 'text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface dark:text-neutral-400 dark:hover:bg-zinc-900 dark:hover:text-white'
                         )}
                       >
                         {t.charAt(0).toUpperCase() + t.slice(1)}
@@ -163,12 +163,12 @@ export function DashboardLayoutClient({ children, businessName, userEmail, imper
   ) : null;
 
   return (
-    <div className='min-h-screen bg-[#f7f9fb] dark:bg-black'>
+    <div className='min-h-screen bg-surface dark:bg-black'>
       {impersonationBanner}
       {header}
       <DashboardShell
         sidebar={sidebar}
-        sidebarClassName='hidden border-0 bg-[#f7f9fb] lg:block dark:bg-zinc-950'
+        sidebarClassName='hidden border-0 bg-surface lg:block dark:bg-zinc-950'
       >
         {children}
       </DashboardShell>
