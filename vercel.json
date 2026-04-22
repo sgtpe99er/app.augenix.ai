@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "src/app/api/internal/generate-logos/route.ts": {
+      "maxDuration": 120
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/check-email-approval",
+      "schedule": "*/5 * * * *"
+    }
+  ]
+}

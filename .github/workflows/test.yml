@@ -1,0 +1,114 @@
+name: Test
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+
+jobs:
+  # ─── Lint + Unit + Integration (Vitest) ───────────────────────────────────
+  unit:
+    name: Lint & Unit/Integration Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit & integration tests
+        run: npm test
+        env:
+          # These are fake test values — real keys are not needed because all
+          # external services (Stripe, Supabase, Vercel, AI) are mocked.
+          STRIPE_PRICE_1MO: price_1mo_test
+          STRIPE_PRICE_6MO: price_6mo_test
+          STRIPE_PRICE_12MO: price_12mo_test
+          STRIPE_PRICE_LIFETIME: price_lifetime_test
+          STRIPE_WEBHOOK_SECRET: whsec_test
+          STRIPE_DOMAIN_PRODUCT_ID: prod_domain_test
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000
+          VERCEL_TOKEN: vercel_test_token
+
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage
+          path: coverage/lcov.info
+
+  # ─── E2E Tests (Playwright) ────────────────────────────────────────────────
+  e2e:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    # Only run E2E when Supabase secrets are available (not on forks)
+    if: github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Build Next.js
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY_TEST }}
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET_TEST }}
+          STRIPE_PRICE_6MO: ${{ secrets.STRIPE_PRICE_6MO_TEST }}
+          STRIPE_PRICE_12MO: ${{ secrets.STRIPE_PRICE_12MO_TEST }}
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000
+
+      - name: Start Next.js server
+        run: npm start &
+        env:
+          PORT: 3000
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY_TEST }}
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET_TEST }}
+          STRIPE_PRICE_6MO: ${{ secrets.STRIPE_PRICE_6MO_TEST }}
+          STRIPE_PRICE_12MO: ${{ secrets.STRIPE_PRICE_12MO_TEST }}
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000
+
+      - name: Wait for server
+        run: npx wait-on http://localhost:3000 --timeout 30000
+
+      - name: Run Playwright tests
+        run: npx playwright test
+        env:
+          CI: true
+          PLAYWRIGHT_BASE_URL: http://localhost:3000
+          # Optional: set these secrets to also run authenticated E2E tests
+          PLAYWRIGHT_USER_EMAIL: ${{ secrets.PLAYWRIGHT_USER_EMAIL }}
+          PLAYWRIGHT_USER_PASSWORD: ${{ secrets.PLAYWRIGHT_USER_PASSWORD }}
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14

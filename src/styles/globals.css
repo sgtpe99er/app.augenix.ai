@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 35%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 0%;
+
+    --border: 0 0% 80%;
+    --input: 0 0% 80%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 0%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --ring: 0 0% 60%;
+
+    --radius: 0.5rem;
+
+    /* Semantic colors - Light mode */
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 0%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    /* Brand colors */
+    --brand: 160 84% 39%;
+    --brand-foreground: 0 0% 0%;
+
+    /* Card variants for nesting */
+    --card-nested: 0 0% 94%;
+    --card-nested-foreground: 0 0% 0%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 100%;
+
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+
+    --ring: 0 0% 40%;
+
+    --radius: 0.5rem;
+
+    /* Semantic colors - Dark mode */
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 0%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 0%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 0%;
+
+    /* Brand colors */
+    --brand: 160 84% 39%;
+    --brand-foreground: 0 0% 0%;
+
+    /* Card variants for nesting */
+    --card-nested: 0 0% 15%;
+    --card-nested-foreground: 0 0% 100%;
+  }
+  ::selection {
+    @apply text-black;
+    @apply bg-cyan-400;
+  }
+  *:focus-visible {
+    @apply outline;
+    @apply outline-2;
+    @apply outline-offset-2;
+    @apply outline-pink-500;
+  }
+  * {
+    @apply border-border;
+    @apply min-w-0;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+  html {
+    @apply h-full;
+  }
+  body {
+    @apply h-full;
+  }
+  h1 {
+    @apply font-alt;
+    @apply font-bold;
+    @apply text-4xl;
+    @apply text-foreground;
+    @apply lg:text-6xl;
+  }
+}
+
+@layer utilities {
+  /* Global light mode contrast fixes - auto-applied without special class */
+  html:not(.dark) .text-neutral-400,
+  html:not(.dark) .text-neutral-500,
+  html:not(.dark) .text-zinc-400,
+  html:not(.dark) .text-zinc-500 {
+    color: hsl(0 0% 35%) !important;
+  }
+
+  html:not(.dark) .text-neutral-300,
+  html:not(.dark) .text-zinc-300 {
+    color: hsl(0 0% 40%) !important;
+  }
+
+  html:not(.dark) .text-neutral-200,
+  html:not(.dark) .text-zinc-200 {
+    color: hsl(0 0% 0%) !important;
+  }
+
+  /* Fix emerald/green text contrast in light mode */
+  html:not(.dark) .text-emerald-400,
+  html:not(.dark) .text-emerald-300 {
+    color: hsl(160 84% 30%) !important;
+  }
+
+  /* Fix status badge text colors in light mode */
+  html:not(.dark) .text-yellow-400,
+  html:not(.dark) .text-amber-400 {
+    color: hsl(45 93% 30%) !important;
+  }
+
+  html:not(.dark) .text-blue-400 {
+    color: hsl(217 91% 40%) !important;
+  }
+
+  html:not(.dark) .text-purple-400 {
+    color: hsl(270 67% 40%) !important;
+  }
+
+  html:not(.dark) .text-cyan-400 {
+    color: hsl(188 94% 35%) !important;
+  }
+
+  html:not(.dark) .text-red-400 {
+    color: hsl(0 84% 45%) !important;
+  }
+
+  /* Legacy dash-contrast class support */
+  .dash-contrast .text-neutral-200,
+  .dash-contrast .text-neutral-300,
+  .dash-contrast .text-neutral-400,
+  .dash-contrast .text-neutral-500,
+  .dash-contrast .text-neutral-600,
+  .dash-contrast .text-neutral-700,
+  .dash-contrast .text-neutral-800,
+  .dash-contrast .text-zinc-200,
+  .dash-contrast .text-zinc-300,
+  .dash-contrast .text-zinc-400,
+  .dash-contrast .text-zinc-500,
+  .dash-contrast .text-zinc-600,
+  .dash-contrast .text-zinc-700,
+  .dash-contrast .text-zinc-800,
+  .dash-contrast .text-white,
+  .dash-contrast .text-muted-foreground,
+  .dash-contrast .placeholder-neutral-500,
+  .dash-contrast .placeholder-neutral-400,
+  .dash-contrast .placeholder-zinc-500,
+  .dash-contrast .placeholder-zinc-400 {
+    @apply text-foreground;
+  }
+
+  .dash-contrast .text-xs,
+  .dash-contrast .text-\[10px\],
+  .dash-contrast .text-\[11px\] {
+    @apply text-sm;
+  }
+
+  .dash-contrast .bg-zinc-950,
+  .dash-contrast .bg-zinc-900,
+  .dash-contrast .bg-zinc-800,
+  .dash-contrast .bg-zinc-700,
+  .dash-contrast .bg-zinc-700\/50,
+  .dash-contrast .bg-black {
+    @apply bg-card;
+  }
+
+  .dash-contrast [class*='bg-black/'] {
+    background-color: hsl(var(--card)) !important;
+  }
+
+  .dash-contrast [class*='bg-zinc-950/'],
+  .dash-contrast [class*='bg-zinc-900/'],
+  .dash-contrast [class*='bg-zinc-800/'],
+  .dash-contrast [class*='bg-zinc-700/'] {
+    background-color: hsl(var(--card)) !important;
+  }
+
+  html:not(.dark) .dash-contrast .bg-zinc-950,
+  html:not(.dark) .dash-contrast .bg-zinc-900,
+  html:not(.dark) .dash-contrast .bg-zinc-800,
+  html:not(.dark) .dash-contrast .bg-zinc-700,
+  html:not(.dark) .dash-contrast .bg-zinc-700\/50,
+  html:not(.dark) .dash-contrast .bg-black {
+    @apply ring-1;
+    @apply ring-border;
+  }
+
+  .dash-contrast .hover\:bg-zinc-800:hover,
+  .dash-contrast .hover\:bg-zinc-900:hover,
+  .dash-contrast .hover\:bg-black:hover {
+    @apply bg-card;
+  }
+
+  .dash-contrast [class*='hover:bg-black/']:hover {
+    background-color: hsl(var(--card)) !important;
+  }
+
+  .dash-contrast .hover\:text-white:hover {
+    @apply text-foreground;
+  }
+
+  .dash-contrast .border-zinc-800,
+  .dash-contrast .border-zinc-700,
+  .dash-contrast .ring-zinc-700,
+  .dash-contrast .ring-zinc-800 {
+    @apply border-border;
+  }
+
+  .dash-contrast .drop-shadow,
+  .dash-contrast .drop-shadow-sm,
+  .dash-contrast .drop-shadow-md,
+  .dash-contrast .drop-shadow-lg,
+  .dash-contrast .drop-shadow-xl,
+  .dash-contrast .drop-shadow-2xl,
+  .dash-contrast [class*='drop-shadow'] {
+    filter: none !important;
+  }
+
+  .dash-contrast h1,
+  .dash-contrast h2,
+  .dash-contrast h3 {
+    text-shadow: none !important;
+  }
+
+  .dash-contrast h1 {
+    @apply text-foreground;
+    @apply drop-shadow-none;
+    @apply lg:text-foreground;
+    @apply lg:bg-none;
+  }
+}
+
+/* Sparkle burst animation for buttons */
+@keyframes sparkle-burst {
+  0% {
+    opacity: 1;
+    transform: scale(0) translate(-50%, -50%);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5) translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2) translate(-50%, -50%);
+  }
+}
+
+.animate-sparkle-burst {
+  animation: sparkle-burst 0.6s ease-out forwards;
+}
