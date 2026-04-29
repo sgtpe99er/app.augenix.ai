@@ -6,15 +6,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   IoGlobe,
-  IoMenu,
   IoGridOutline,
   IoLogOutOutline,
+  IoMenu,
 } from 'react-icons/io5';
 
 import { signOut } from '@/app/(auth)/auth-actions';
 import { AccountMenu } from '@/components/account-menu';
 import { DashboardShell } from '@/components/dashboard-shell';
-import { useThemePreference, type ThemePreference } from '@/components/theme-selector';
+import { type ThemePreference,useThemePreference } from '@/components/theme-selector';
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { useToast } from '@/components/ui/use-toast';
 import { cn } from '@/utils/cn';
@@ -103,7 +103,7 @@ export function DashboardLayoutClient({ children, businessName, userEmail, imper
                   {(businessName || userEmail) && (
                     <div className='mb-3 px-3'>
                       {businessName && <div className='text-sm font-medium text-on-surface dark:text-white'>{businessName}</div>}
-                      {userEmail && <div className='text-xs text-on-surface-variant dark:text-neutral-500'>{userEmail}</div>
+                      {userEmail && <div className='text-xs text-on-surface-variant dark:text-neutral-500'>{userEmail}</div>}
                     </div>
                   )}
                   <SheetClose asChild>

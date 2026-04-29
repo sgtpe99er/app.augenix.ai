@@ -43,8 +43,8 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  title: 'Ardent Advisors AI',
-  description: 'Get a free professional website, logo, and branding guide for your small business. We handle everything — you just pay for hosting.',
+  title: 'Augenix',
+  description: 'AI-powered website management and marketing automations for local businesses.',
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
