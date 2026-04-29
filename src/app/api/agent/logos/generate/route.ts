@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+
 import { generateLogo } from '@/libs/ai/stability';
 
 function verifyAgentApiKey(request: NextRequest): boolean {

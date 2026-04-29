@@ -2,10 +2,12 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { IoAdd, IoClose, IoInformationCircle } from 'react-icons/io5';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+
 import type { WebsiteGuideUnsavedActions } from '../index';
-import { WebsiteGuideData, EMAIL_SUGGESTIONS } from '../types';
+import { EMAIL_SUGGESTIONS,WebsiteGuideData } from '../types';
 
 interface EmailSectionProps {
   data: WebsiteGuideData;

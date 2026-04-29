@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint --ext .ts,.tsx src",
     "email:build": "email build",
     "email:dev": "email dev --dir ./src/features/emails --port 3001",
     "email:export": "email export",

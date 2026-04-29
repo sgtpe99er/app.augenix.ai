@@ -1,4 +1,5 @@
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
+
 import { requireAdmin } from '../require-admin';
 import { AnalyticsTab } from '../tabs/analytics-tab';
 

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
+
 import { getSession } from '@/features/account/controllers/get-session';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 type EditRequest = {
   id: string;

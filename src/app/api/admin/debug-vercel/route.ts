@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getProject } from '@/libs/vercel/client';
+
 import { getRepoFile } from '@/libs/github/client';
+import { getProject } from '@/libs/vercel/client';
 
 const VERCEL_TOKEN = process.env.VERCEL_TOKEN;
 const VERCEL_TEAM_ID = process.env.VERCEL_TEAM_ID;

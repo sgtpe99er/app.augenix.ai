@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
 import { getBranchDeployment } from '@/libs/vercel/client';
 

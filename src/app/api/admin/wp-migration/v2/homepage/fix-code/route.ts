@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
+
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 export const maxDuration = 300; // fix loop makes multiple AI calls per iteration
 

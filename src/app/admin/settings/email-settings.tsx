@@ -1,6 +1,7 @@
 'use client';
 
 import { Input } from '@/components/ui/input';
+
 import { EmailSettings } from './settings-defaults';
 
 const EMAIL_LABELS: Record<string, string> = {

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
+
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 // GET /api/admin/queue/stats
 // Returns summary counts for the queue header badges.

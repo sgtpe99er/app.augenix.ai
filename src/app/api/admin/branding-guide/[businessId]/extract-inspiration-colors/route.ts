@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+
 import type { ColorPalette } from '../../../../../admin/tabs/branding-guide/sections/style-studio/types';
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ businessId: string }> }) {

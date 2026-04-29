@@ -1,7 +1,7 @@
 'use client';
 
-import { PreviewProps } from './types';
 import { VIBE_TOKENS } from './data';
+import { PreviewProps } from './types';
 
 export function Preview({
   primary,

@@ -1,6 +1,7 @@
 'use client';
 
 import { Input } from '@/components/ui/input';
+
 import { PricingSettings } from './settings-defaults';
 
 interface PricingSettingsTabProps {

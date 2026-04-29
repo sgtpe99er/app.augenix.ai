@@ -1,8 +1,9 @@
 'use client';
 
-import { AdminStat } from '@/components/admin/stat';
-import { AdminSectionHeader } from '@/components/admin/section-header';
 import { AdminSection } from '@/components/admin/section';
+import { AdminSectionHeader } from '@/components/admin/section-header';
+import { AdminStat } from '@/components/admin/stat';
+
 import { type DashboardStats } from './types';
 
 interface AnalyticsTabProps {

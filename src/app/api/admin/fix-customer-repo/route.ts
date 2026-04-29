@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
+
 import { getRepoFile, upsertRepoFile } from '@/libs/github/client';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 async function assertAdmin(supabase: any) {
   const { data: { user } } = await supabase.auth.getUser();

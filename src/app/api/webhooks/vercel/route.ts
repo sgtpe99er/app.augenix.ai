@@ -1,7 +1,8 @@
-import { createHmac } from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { createHmac } from 'crypto';
+
 import { sendWebsiteLiveEmail } from '@/features/emails/send-website-live';
+import { createClient } from '@supabase/supabase-js';
 
 function verifySignature(body: string, signature: string | null): boolean {
   const secret = process.env.VERCEL_WEBHOOK_SECRET;

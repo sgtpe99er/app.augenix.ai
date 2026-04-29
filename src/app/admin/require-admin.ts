@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+
 import { getSession } from '@/features/account/controllers/get-session';
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 

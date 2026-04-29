@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { IoPersonCircleOutline } from 'react-icons/io5';
 
+import { ThemeMenuRadioGroup, useThemePreference } from '@/components/theme-selector';
 import {
   DropdownMenu,
   DropdownMenuArrow,
@@ -13,7 +14,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { ThemeMenuRadioGroup, useThemePreference } from '@/components/theme-selector';
 import { ActionResponse } from '@/types/action-response';
 
 import { useToast } from './ui/use-toast';

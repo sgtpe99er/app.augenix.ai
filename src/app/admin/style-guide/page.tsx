@@ -2,12 +2,13 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { AdminStat } from '@/components/admin/stat';
-import { AdminSectionHeader } from '@/components/admin/section-header';
-import { AdminSection } from '@/components/admin/section';
+
 import { AdminListRow } from '@/components/admin/list-row';
+import { AdminSection } from '@/components/admin/section';
+import { AdminSectionHeader } from '@/components/admin/section-header';
+import { AdminStat } from '@/components/admin/stat';
+import { Modal, ModalBody, ModalFooter,ModalHeader } from '@/components/modal';
 import { Button } from '@/components/ui/button';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from '@/components/modal';
 
 export default function StyleGuidePage() {
   const [modalOpen, setModalOpen] = useState(false);

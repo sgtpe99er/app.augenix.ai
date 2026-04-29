@@ -6,6 +6,7 @@
  */
 
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+
 import { LogoGenerationInput, LogoGenerationOutput } from './types';
 
 const STABILITY_API_KEY = process.env.STABILITY_API_KEY;

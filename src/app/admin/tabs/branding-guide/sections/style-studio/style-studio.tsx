@@ -1,14 +1,16 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { BrandingGuideData } from '../../types';
+
 import type { BrandingGuideUnsavedActions } from '../../index';
-import type { ColorPalette, ColorAssignment, FontPairing, PreviewProps } from './types';
-import { CURATED_PALETTES, CURATED_FONT_PAIRINGS, WEBSITE_TEMPLATES } from './data';
-import { defaultAssignment, getTokensForVibe, loadGoogleFont } from './utils';
+import type { BrandingGuideData } from '../../types';
+
+import { CURATED_FONT_PAIRINGS, CURATED_PALETTES, WEBSITE_TEMPLATES } from './data';
+import { PalettePicker } from './palette-picker';
 import { Preview } from './preview';
 import { TemplatePicker } from './template-picker';
-import { PalettePicker } from './palette-picker';
+import type { ColorAssignment, ColorPalette, FontPairing, PreviewProps } from './types';
+import { defaultAssignment, getTokensForVibe, loadGoogleFont } from './utils';
 
 interface StyleStudioProps {
   data: BrandingGuideData;

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 interface RouteContext {

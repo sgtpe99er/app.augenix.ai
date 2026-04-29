@@ -1,27 +1,31 @@
 'use client';
 
-import { createContext, useContext, PropsWithChildren, ReactNode, useState, useCallback } from 'react';
+import { createContext, PropsWithChildren, ReactNode, useCallback,useContext, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
-  IoPeople,
-  IoCreate,
-  IoStatsChart,
-  IoCard,
-  IoSettings,
-  IoRocket,
-  IoHelpCircle,
   IoBusinessSharp,
-  IoListOutline,
-  IoChevronForward,
+  IoCard,
   IoChevronBack,
-  IoPersonCircleOutline,
-  IoMenu,
+  IoChevronForward,
+  IoCreate,
   IoGridOutline,
+  IoHelpCircle,
+  IoListOutline,
   IoLogOutOutline,
+  IoMenu,
+  IoPeople,
+  IoPersonCircleOutline,
+  IoRocket,
+  IoSettings,
+  IoStatsChart,
 } from 'react-icons/io5';
+
+import { signOut } from '@/app/(auth)/auth-actions';
 import { CustomerSwitcher } from '@/components/admin/customer-switcher';
+import { DashboardShell } from '@/components/dashboard-shell';
+import { ThemeMenuRadioGroup, useThemePreference } from '@/components/theme-selector';
 import {
   DropdownMenu,
   DropdownMenuArrow,
@@ -31,11 +35,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { ThemeMenuRadioGroup, useThemePreference } from '@/components/theme-selector';
-import { useToast } from '@/components/ui/use-toast';
-import { signOut } from '@/app/(auth)/auth-actions';
-import { DashboardShell } from '@/components/dashboard-shell';
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { useToast } from '@/components/ui/use-toast';
 import { cn } from '@/utils/cn';
 
 const NAV_ITEMS = [

@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+
 import { getSession } from '@/features/account/controllers/get-session';
-import { sendNotification, generateMagicLinkUrl } from '@/features/emails/send-notification';
+import { generateMagicLinkUrl,sendNotification } from '@/features/emails/send-notification';
+import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 async function checkAdmin() {
   const session = await getSession();

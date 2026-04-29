@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { IoSparkles, IoColorPalette, IoChevronBack, IoChevronForward } from 'react-icons/io5';
+import { IoChevronBack, IoChevronForward,IoColorPalette, IoSparkles } from 'react-icons/io5';
+
 import { cn } from '@/utils/cn';
-import { StyleStudio } from './sections/style-studio/index';
+
 import { InspirationSection } from './sections/inspiration';
+import { StyleStudio } from './sections/style-studio/index';
 import { BrandingGuideData, initialBrandingGuideData } from './types';
 
 export type BrandingGuideSubTab = 'inspiration' | 'style';

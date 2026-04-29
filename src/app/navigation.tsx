@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { IoMenu } from 'react-icons/io5';
 
 import { AccountMenu } from '@/components/account-menu';
-import { SparkleButton } from '@/components/ui/sparkle-button';
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { SparkleButton } from '@/components/ui/sparkle-button';
 import { getSession } from '@/features/account/controllers/get-session';
 
 import { signOut } from './(auth)/auth-actions';

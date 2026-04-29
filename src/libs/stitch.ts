@@ -11,8 +11,8 @@
  *   SUPABASE_SECRET_KEY or SUPABASE_SERVICE_ROLE_KEY — Supabase service-role key
  */
 
-import { Stitch, StitchToolClient, Screen } from '@google/stitch-sdk';
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { Screen,Stitch, StitchToolClient } from '@google/stitch-sdk';
 
 const STORAGE_BUCKET = 'generated-assets';
 

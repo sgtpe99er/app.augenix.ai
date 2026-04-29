@@ -1,5 +1,6 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
+
 import { requireAdmin } from '../require-admin';
 import { HelpTab } from '../tabs/help-tab';
 

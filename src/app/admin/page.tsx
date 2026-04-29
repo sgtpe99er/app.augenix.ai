@@ -1,7 +1,8 @@
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { requireAdmin } from './require-admin';
+
 import { OverviewTab } from './tabs/overview-tab';
+import { requireAdmin } from './require-admin';
 
 export default async function AdminPage() {
   await requireAdmin();

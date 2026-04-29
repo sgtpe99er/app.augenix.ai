@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
-import { purchaseDomain } from '@/libs/vercel/purchase-domain';
-import { getDomainPrice } from '@/libs/vercel/domains';
+
 import { getSession } from '@/features/account/controllers/get-session';
+import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
+import { getDomainPrice } from '@/libs/vercel/domains';
+import { purchaseDomain } from '@/libs/vercel/purchase-domain';
 
 async function checkAdmin() {
   const session = await getSession();

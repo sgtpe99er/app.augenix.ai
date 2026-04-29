@@ -1,7 +1,8 @@
 import { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
+import { Montserrat, Montserrat_Alternates, Newsreader,Poppins } from 'next/font/google';
 import Script from 'next/script';
-import { Montserrat, Montserrat_Alternates, Poppins, Newsreader } from 'next/font/google';
+
 import { ThemeInitScript } from '@/components/theme-init-script';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/utils/cn';
@@ -43,8 +44,8 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  title: 'Ardent Advisors AI',
-  description: 'Get a free professional website, logo, and branding guide for your small business. We handle everything — you just pay for hosting.',
+  title: 'Augenix',
+  description: 'AI-powered website management and marketing automations for local businesses.',
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {

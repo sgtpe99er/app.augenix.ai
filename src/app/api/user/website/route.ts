@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+
 import { getSession } from '@/features/account/controllers/get-session';
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
 

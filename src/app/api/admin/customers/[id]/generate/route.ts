@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+
 import { getSession } from '@/features/account/controllers/get-session';
 import { generateAssets } from '@/libs/ai/asset-generator';
+import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 export async function POST(
   _request: NextRequest,

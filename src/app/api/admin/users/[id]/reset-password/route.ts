@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+
 import { getSession } from '@/features/account/controllers/get-session';
-import { sendEmail } from '@/libs/email/mailer';
 import { BASE_URL } from '@/features/emails/send-notification';
+import { sendEmail } from '@/libs/email/mailer';
+import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 async function checkAdmin() {
   const session = await getSession();

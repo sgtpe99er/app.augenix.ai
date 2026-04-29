@@ -4,9 +4,9 @@
  * interpolates variables, and sends via the mailer.
  */
 
+import { DEFAULT_EMAILS } from '@/app/admin/settings/settings-defaults';
 import { sendEmail } from '@/libs/email/mailer';
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
-import { DEFAULT_EMAILS } from '@/app/admin/settings/settings-defaults';
 // Emails must always link to the production domain, never localhost.
 export const BASE_URL = process.env.ROOT_DOMAIN
   ? `https://${process.env.ROOT_DOMAIN}`

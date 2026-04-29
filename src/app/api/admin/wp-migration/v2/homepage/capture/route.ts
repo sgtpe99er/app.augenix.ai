@@ -1,9 +1,10 @@
 export const maxDuration = 120;
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+
 import { launchBrowser } from '@/libs/puppeteer/browser';
+import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 const SCREENSHOT_BUCKET = 'migration-screenshots';
 
