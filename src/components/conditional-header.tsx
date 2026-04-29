@@ -1,7 +1,7 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { PropsWithChildren } from 'react';
+import { usePathname } from 'next/navigation';
 
 export function ConditionalHeader({ children }: PropsWithChildren) {
   const pathname = usePathname();

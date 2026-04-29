@@ -1,13 +1,15 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
+
 import type { WebsiteGuideUnsavedActions } from '../index';
-import { WebsiteGuideData, INDUSTRIES, DAYS_OF_WEEK } from '../types';
+import { DAYS_OF_WEEK,INDUSTRIES, WebsiteGuideData } from '../types';
 
 interface BusinessBasicsSectionProps {
   data: WebsiteGuideData;

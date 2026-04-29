@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
-import { sendEditRequestReceivedEmail } from '@/features/emails/send-edit-request-received';
+
 import { sendEditRequestCompletedEmail } from '@/features/emails/send-edit-request-completed';
+import { sendEditRequestReceivedEmail } from '@/features/emails/send-edit-request-received';
+import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 export async function PATCH(
   request: NextRequest,

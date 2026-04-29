@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+
 import { getRepoFile, upsertRepoFile } from '@/libs/github/client';
+import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 import { getLatestDeployment, upsertEnvVar } from '@/libs/vercel/client';
 
 async function logActivity(jobId: string, action: string, message: string) {

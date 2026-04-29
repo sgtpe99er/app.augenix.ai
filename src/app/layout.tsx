@@ -1,7 +1,8 @@
 import { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
+import { Montserrat, Montserrat_Alternates, Newsreader,Poppins } from 'next/font/google';
 import Script from 'next/script';
-import { Montserrat, Montserrat_Alternates, Poppins, Newsreader } from 'next/font/google';
+
 import { ThemeInitScript } from '@/components/theme-init-script';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/utils/cn';

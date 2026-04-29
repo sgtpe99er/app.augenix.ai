@@ -1,4 +1,5 @@
 import { requireAdmin } from '../require-admin';
+
 import { AdminSettings } from './admin-settings';
 
 export default async function AdminSettingsPage() {

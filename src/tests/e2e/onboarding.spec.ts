@@ -9,7 +9,7 @@
  * a test account). In CI, set these secrets to enable the full suite.
  */
 
-import { test, expect } from '@playwright/test';
+import { expect,test } from '@playwright/test';
 
 const TEST_EMAIL = process.env.PLAYWRIGHT_USER_EMAIL;
 const TEST_PASSWORD = process.env.PLAYWRIGHT_USER_PASSWORD;

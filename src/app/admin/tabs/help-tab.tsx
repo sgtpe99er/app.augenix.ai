@@ -1,11 +1,13 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useCallback,useEffect, useRef, useState } from 'react';
+import { IoBulb,IoCheckmark, IoCopy, IoInformationCircle, IoSearch, IoWarning } from 'react-icons/io5';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { IoSearch, IoCopy, IoCheckmark, IoInformationCircle, IoWarning, IoBulb } from 'react-icons/io5';
+
 import { cn } from '@/utils/cn';
-import { HELP_DOCS, type DocSection, type ContentBlock, type CalloutVariant } from './help-data';
+
+import { type CalloutVariant,type ContentBlock, type DocSection, HELP_DOCS } from './help-data';
 import { DIAGRAMS } from './help-diagrams';
 
 // ─── Inline text parser (handles **bold** and `code`) ───────────────────────

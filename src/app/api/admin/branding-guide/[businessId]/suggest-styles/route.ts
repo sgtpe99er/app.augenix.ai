@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import type { StylePackage, ColorPalette } from '../../../../../admin/tabs/branding-guide/sections/style-studio/types';
+
+import type { ColorPalette,StylePackage } from '../../../../../admin/tabs/branding-guide/sections/style-studio/types';
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ businessId: string }> }) {
   // TODO: Assert admin auth (e.g., getServerSession)

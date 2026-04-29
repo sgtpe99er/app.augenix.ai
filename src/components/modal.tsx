@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
-import { IoClose } from 'react-icons/io5';
 import type { IconType } from 'react-icons';
-import { cn } from '@/utils/cn';
+import { IoClose } from 'react-icons/io5';
+
 import { Button } from '@/components/ui/button';
+import { cn } from '@/utils/cn';
 
 // ─── Tab types ───────────────────────────────────────────────────────────────
 

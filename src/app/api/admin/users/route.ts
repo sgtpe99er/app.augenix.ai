@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+
 import { getSession } from '@/features/account/controllers/get-session';
 import { sendWelcomeEmail } from '@/features/emails/send-welcome';
+import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 import type { Tables } from '@/libs/supabase/types';
 
 type Business = Tables<'aa_demo_businesses'>;

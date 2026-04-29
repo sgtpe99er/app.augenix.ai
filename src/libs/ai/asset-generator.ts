@@ -9,8 +9,9 @@
  * 5. Persists results to Supabase + sends notification email
  */
 
-import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
 import { sendAssetsReadyEmail } from '@/features/emails/send-assets-ready';
+import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+
 import { generateBrandingGuide, generateColorSuggestions, generateFontSuggestions } from './anthropic';
 import { generateLogoVariations, generateWebsiteMockup } from './stability';
 import { AssetGenerationJob, BrandingGuideInput } from './types';

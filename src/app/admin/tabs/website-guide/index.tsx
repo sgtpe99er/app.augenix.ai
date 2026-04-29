@@ -1,26 +1,28 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import {
-  IoList,
   IoBusiness,
-  IoGlobe,
-  IoShareSocial,
-  IoSearch,
-  IoExtensionPuzzle,
-  IoMail,
   IoChevronBack,
   IoChevronForward,
+  IoExtensionPuzzle,
+  IoGlobe,
+  IoList,
+  IoMail,
+  IoSearch,
+  IoShareSocial,
 } from 'react-icons/io5';
+
 import { cn } from '@/utils/cn';
-import { OverviewSection } from './sections/overview';
+
 import { BusinessBasicsSection } from './sections/business-basics';
 import { DomainSection } from './sections/domain';
+import { EmailSection } from './sections/email';
 import { OnlinePresenceSection } from './sections/online-presence';
+import { OverviewSection } from './sections/overview';
 import { SeoTargetMarketSection } from './sections/seo-target-market';
 import { WebsiteFeaturesSection } from './sections/website-features';
-import { EmailSection } from './sections/email';
-import { WebsiteGuideData, initialWebsiteGuideData, WEBSITE_GUIDE_FIELDS } from './types';
+import { initialWebsiteGuideData, WEBSITE_GUIDE_FIELDS,WebsiteGuideData } from './types';
 
 export type WebsiteGuideSubTab = 'overview' | 'business' | 'domain' | 'email' | 'presence' | 'seo' | 'features';
 

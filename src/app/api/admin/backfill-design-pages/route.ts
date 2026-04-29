@@ -1,9 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
-import { createServerClient } from '@supabase/ssr';
+import { NextRequest, NextResponse } from 'next/server';
+
 import { commitMultipleFiles } from '@/libs/github/client';
-import { DESIGN_PAGES, DESIGN_LABELS } from '@/libs/website-variants/home-page-designs';
+import { DESIGN_LABELS,DESIGN_PAGES } from '@/libs/website-variants/home-page-designs';
+import { createServerClient } from '@supabase/ssr';
+import { createClient } from '@supabase/supabase-js';
 
 const ROOT_DOMAIN = process.env.ROOT_DOMAIN ?? 'freewebsite.deal';
 

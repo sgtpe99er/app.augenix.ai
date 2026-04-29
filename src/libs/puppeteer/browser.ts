@@ -1,4 +1,5 @@
 import puppeteerCore from 'puppeteer-core';
+
 import chromium from '@sparticuz/chromium';
 
 /**

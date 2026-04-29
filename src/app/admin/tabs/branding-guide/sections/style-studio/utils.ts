@@ -1,5 +1,5 @@
-import type { ColorPalette, ColorAssignment } from './types';
 import { VIBE_TOKENS } from './data';
+import type { ColorAssignment,ColorPalette } from './types';
 
 const loadedFonts = new Set<string>();
 

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+
 import { generateMagicLinkUrl } from '@/features/emails/send-notification';
+import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
 
 function verifyAgentApiKey(request: NextRequest): boolean {
   const key = process.env.FREEWEBSITE_AGENT_API_KEY;

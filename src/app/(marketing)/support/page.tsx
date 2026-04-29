@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { IoMail, IoSend, IoCheckmarkCircle, IoAlertCircle } from 'react-icons/io5';
+import { IoAlertCircle,IoCheckmarkCircle, IoMail, IoSend } from 'react-icons/io5';
 
 import { Container } from '@/components/container';
 import { Button } from '@/components/ui/button';

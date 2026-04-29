@@ -1,6 +1,6 @@
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
-import { buyDomain, getDomainPrice, type DomainRegistrantContact } from '@/libs/vercel/domains';
 import { addDomain } from '@/libs/vercel/client';
+import { buyDomain, type DomainRegistrantContact,getDomainPrice } from '@/libs/vercel/domains';
 
 interface PurchaseDomainInput {
   userId: string;

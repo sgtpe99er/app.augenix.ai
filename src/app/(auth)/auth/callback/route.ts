@@ -3,8 +3,8 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-import { createServerClient } from '@supabase/ssr';
 import { getEnvVar } from '@/utils/get-env-var';
+import { createServerClient } from '@supabase/ssr';
 
 function getPublishableKey(): string {
   const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;

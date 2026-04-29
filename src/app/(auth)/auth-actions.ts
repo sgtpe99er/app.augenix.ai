@@ -2,10 +2,10 @@
 
 import { redirect } from 'next/navigation';
 
+import { sendWelcomeEmail } from '@/features/emails/send-welcome';
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 import { ActionResponse } from '@/types/action-response';
 import { getURL } from '@/utils/get-url';
-import { sendWelcomeEmail } from '@/features/emails/send-welcome';
 
 export async function signInWithOAuth(provider: 'github' | 'google'): Promise<ActionResponse> {
   const supabase = await createSupabaseServerClient();

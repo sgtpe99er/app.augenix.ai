@@ -1,4 +1,4 @@
-import { sendNotification, BASE_URL } from './send-notification';
+import { BASE_URL,sendNotification } from './send-notification';
 
 export async function sendEditRequestCompletedEmail({
   userEmail,

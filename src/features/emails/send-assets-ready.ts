@@ -1,4 +1,4 @@
-import { sendNotification, BASE_URL, generateMagicLinkUrl } from './send-notification';
+import { BASE_URL, generateMagicLinkUrl,sendNotification } from './send-notification';
 
 export async function sendAssetsReadyEmail({
   userId,

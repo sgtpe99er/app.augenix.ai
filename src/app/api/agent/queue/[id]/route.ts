@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
-import { sendEmail } from '@/libs/email/mailer';
+
 import { sendEditRequestCompletedEmail } from '@/features/emails/send-edit-request-completed';
+import { sendEmail } from '@/libs/email/mailer';
+import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
 
 function verifyAgentApiKey(request: NextRequest): boolean {
   const key = process.env.FREEWEBSITE_AGENT_API_KEY;

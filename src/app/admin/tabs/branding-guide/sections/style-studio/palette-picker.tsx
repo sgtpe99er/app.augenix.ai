@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { IoShuffle, IoColorPaletteOutline, IoClose } from 'react-icons/io5';
+import { IoClose,IoColorPaletteOutline, IoShuffle } from 'react-icons/io5';
+
 import { cn } from '@/utils/cn';
-import type { ColorPalette, ColorAssignment } from './types';
+
+import type { ColorAssignment,ColorPalette } from './types';
 import { shuffleColors } from './utils';
 
 interface PalettePickerProps {

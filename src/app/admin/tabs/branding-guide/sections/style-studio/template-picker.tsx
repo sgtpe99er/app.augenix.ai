@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import { cn } from '@/utils/cn';
-import { WEBSITE_TEMPLATES, CURATED_PALETTES, CURATED_FONT_PAIRINGS, VIBE_TOKENS } from './data';
+
+import { CURATED_FONT_PAIRINGS, CURATED_PALETTES, VIBE_TOKENS,WEBSITE_TEMPLATES } from './data';
 import { loadGoogleFont } from './utils';
 
 interface TemplatePickerProps {

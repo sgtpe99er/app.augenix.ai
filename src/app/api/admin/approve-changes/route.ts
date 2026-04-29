@@ -1,8 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
-import { createServerClient } from '@supabase/ssr';
+import { NextRequest, NextResponse } from 'next/server';
+
 import { mergePullRequest } from '@/libs/github/client';
+import { createServerClient } from '@supabase/ssr';
+import { createClient } from '@supabase/supabase-js';
 
 async function requireAdmin(): Promise<{ userId: string } | NextResponse> {
   const cookieStore = await cookies();

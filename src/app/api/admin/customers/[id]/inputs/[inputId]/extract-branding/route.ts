@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
+
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
 
 const AI_GATEWAY_API_KEY = process.env.AI_GATEWAY_API_KEY;
 const AI_GATEWAY_BASE_URL = 'https://ai-gateway.vercel.sh/v1';

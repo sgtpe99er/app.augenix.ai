@@ -6,7 +6,7 @@
  * require Stripe or AI integrations — just a running Next.js server.
  */
 
-import { test, expect } from '@playwright/test';
+import { expect,test } from '@playwright/test';
 
 // ─── Public routes ────────────────────────────────────────────────────────────
 

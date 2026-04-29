@@ -1,14 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { IoCash, IoMail, IoSave, IoCheckmark } from 'react-icons/io5';
+import { IoCash, IoCheckmark,IoMail, IoSave } from 'react-icons/io5';
 
 import { Container } from '@/components/container';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
-import { DEFAULT_EMAILS, DEFAULT_PRICING, EmailSettings, PricingSettings } from './settings-defaults';
-import { PricingSettingsTab } from './pricing-settings';
+
 import { EmailSettingsTab } from './email-settings';
+import { PricingSettingsTab } from './pricing-settings';
+import { DEFAULT_EMAILS, DEFAULT_PRICING, EmailSettings, PricingSettings } from './settings-defaults';
 
 type SettingsTab = 'pricing' | 'emails';
 

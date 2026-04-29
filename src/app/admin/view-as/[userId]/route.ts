@@ -1,7 +1,9 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { requireAdmin } from '../../require-admin';
-import { signImpersonationToken, IMPERSONATE_COOKIE } from '@/utils/impersonation';
+
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
+import { IMPERSONATE_COOKIE,signImpersonationToken } from '@/utils/impersonation';
+
+import { requireAdmin } from '../../require-admin';
 
 /**
  * GET /admin/view-as/[userId]

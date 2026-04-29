@@ -2,12 +2,14 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { IoAdd, IoClose } from 'react-icons/io5';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import type { WebsiteGuideUnsavedActions } from '../index';
-import { WebsiteGuideData, WEBSITE_FEATURES, PRIMARY_CTA_OPTIONS, PAYMENT_METHODS, LANGUAGES } from '../types';
 import { cn } from '@/utils/cn';
+
+import type { WebsiteGuideUnsavedActions } from '../index';
+import { LANGUAGES,PAYMENT_METHODS, PRIMARY_CTA_OPTIONS, WEBSITE_FEATURES, WebsiteGuideData } from '../types';
 
 interface WebsiteFeaturesSectionProps {
   data: WebsiteGuideData;

@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
+
 import { IMPERSONATE_COOKIE } from '@/utils/impersonation';
 
 /**

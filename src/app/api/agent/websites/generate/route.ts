@@ -1,10 +1,11 @@
 import { after } from 'next/server';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { commitMultipleFiles,createRepoFromTemplate, getRepoFile, upsertRepoFile } from '@/libs/github/client';
+import { type BusinessInfo,generateDesignVariants } from '@/libs/stitch';
 import { supabaseAdminClient } from '@/libs/supabase/supabase-admin';
-import { createRepoFromTemplate, getRepoFile, upsertRepoFile, commitMultipleFiles } from '@/libs/github/client';
-import { createProject, addDomain } from '@/libs/vercel/client';
-import { DESIGN_PAGES, DESIGN_LABELS } from '@/libs/website-variants/home-page-designs';
-import { generateDesignVariants, type BusinessInfo } from '@/libs/stitch';
+import { addDomain,createProject } from '@/libs/vercel/client';
+import { DESIGN_LABELS,DESIGN_PAGES } from '@/libs/website-variants/home-page-designs';
 
 const ROOT_DOMAIN = process.env.ROOT_DOMAIN ?? 'freewebsite.deal';
 

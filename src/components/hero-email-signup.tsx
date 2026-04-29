@@ -2,10 +2,10 @@
 
 import { FormEvent, useState } from 'react';
 
+import { signInWithMagicLink } from '@/app/(auth)/auth-actions';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
-import { signInWithMagicLink } from '@/app/(auth)/auth-actions';
 
 export function HeroEmailSignup() {
   const [pending, setPending] = useState(false);
